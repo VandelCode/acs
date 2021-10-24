@@ -1,5 +1,7 @@
 !alias acs embed
 <drac2>
+# get helptext gvar
+helptext = get_gvar("3c6e3f64-815a-4dda-9c7e-134a2583ca19")
 # get the prices svar
 prices = load_json(get_svar('acsPrices'))
 # define variable for arg parsing
@@ -16,7 +18,7 @@ desc = "This is an alias to trade on the Atlas CurrenSea!"
 
 # start an if/else that first checks if the user asks for help (use oneliner)
 if help :
-  output = "Usage|This will be useful help text"
+  output = "Usage|{helptext}"
 # if they dont ask for help check if they're checking, buying, or selling
 elif cbs == "check" :
   output = "Checking prices...|This will be a list of current prices"
