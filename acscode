@@ -2,7 +2,7 @@
 <drac2>
 # get helptext gvar
 helptext = get_gvar("3c6e3f64-815a-4dda-9c7e-134a2583ca19")
-# get the prices svar
+# get prices svar
 prices = load_json(get_svar('acsPrices'))
 # define variable for arg parsing
 args = &ARGS&
@@ -10,13 +10,15 @@ pargs = argparse(args)
 # define check/buy/sell amount and symbol variables
 if args :
   cbs,A,S = args[0].lower() if args else "help", pargs.last('amt'), pargs.last('sym')
+sym = [x for x in prices if S.lower() in x.lower()]
+symN = sym[0]
+symP = prices.get(symN)
 # define help variable
 help = args[0].lower() in '?help' if args else True
 # define a description variable containing the basic description
 desc = "This is an alias to trade on the Atlas CurrenSea!"
-# define a variable containing a gvar of help text
 
-# start an if/else that first checks if the user asks for help (use oneliner)
+# start an if/else that first checks if the user asks for help
 if help :
   output = "Usage|{helptext}"
 # if they dont ask for help check if they're checking, buying, or selling
@@ -32,7 +34,10 @@ else :
 text = (f'-title "Atlas CurrenSea!"'
   f' -desc "{desc}"'
   f' -f "{output}"'
-  f' -f "{prices}"')
+  f' -f "Prices|{prices}"'
+  f' -f "Symbol|{sym}"'
+  f' -f "Symbol Name|{symN}"'
+  f' -f "Symbol Price|{symP}"')
   
 return text
 
