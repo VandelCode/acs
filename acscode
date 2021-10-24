@@ -30,9 +30,7 @@ else :
 text = (f'-title "Atlas CurrenSea!"'
   f' -desc "{desc}"'
   f' -f "{output}"'
-  f' -f "{prices}"'
-  f' -f "Price1|{prices["AAI"]}"'
-  f' -f "Price2|{prices[2]}"')
+  f' -f "{prices}"')
   
 return text
 
