@@ -4,15 +4,18 @@
 helptext = get_gvar("3c6e3f64-815a-4dda-9c7e-134a2583ca19")
 # get prices svar
 prices = load_json(get_svar('acsPrices'))
+allPrice = [i for i in prices]
 # define variable for arg parsing
 args = &ARGS&
 pargs = argparse(args)
 # define check/buy/sell amount and symbol variables
 if args :
-  cbs,A,S = args[0].lower() if args else "help", pargs.last('amt'), pargs.last('sym')
-sym = [x for x in prices if S.lower() in x.lower()]
-symN = sym[0]
-symP = prices.get(symN)
+  cbs,A,S = args[0].lower() if args else "help", pargs.last('amt'), pargs.last('sym').lower()
+  # sym = [x for x in prices if S.lower() in x.lower()]
+  sym = prices[S]
+  sName = sym['name']
+  sPrice = sym['price']
+  sDesc = sym['desc']
 # define help variable
 help = args[0].lower() in '?help' if args else True
 # define a description variable containing the basic description
@@ -23,7 +26,7 @@ if help :
   output = "Usage|{helptext}"
 # if they dont ask for help check if they're checking, buying, or selling
 elif cbs == "check" :
-  output = "Checking prices...|This will be a list of current prices"
+  output = "Checking prices...|*Name:* {sName}\n\n*Price:* {sPrice}\n\n*Company Description:* {sDesc}"
 elif cbs == "buy" :
   output = "Buying Stock!|You bought this amount of that"
 elif cbs == "sell" :
@@ -35,9 +38,10 @@ text = (f'-title "Atlas CurrenSea!"'
   f' -desc "{desc}"'
   f' -f "{output}"'
   f' -f "Prices|{prices}"'
-  f' -f "Symbol|{sym}"'
-  f' -f "Symbol Name|{symN}"'
-  f' -f "Symbol Price|{symP}"')
+  f' -f "sym|{sym}"'
+  f' -f "sName|{sName}"'
+  f' -f "sPrice|{sPrice}"'
+  f' -f "allPrice|{allPrice}"')
   
 return text
 

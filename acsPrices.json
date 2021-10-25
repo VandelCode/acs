@@ -1,9 +1,37 @@
 {
-	"AAI":10,
-	"ACCI":8,
-	"GNN":4,
-	"MYSC":5,
-	"TCO":7,
-	"UTPN":8,
-	"VTSF":6
+	"AAI": {
+		"name": "Atlas Armory Initiative",
+		"price": "10gp",
+		"desc": "The Atlas Armory Initiative is the organiztion that employes so-called \"Adventurers\" to take on a wide variety of dangerous jobs aboard Atlas Station and beyond."
+	},
+	"ACCI": {
+		"name": "Accent Industries",
+		"price": "8gp",
+		"desc": "To be added"
+	},
+	"GNN": {
+		"name": "Global News Network",
+		"price": "8gp",
+		"desc": "To be added"
+	},
+	"MYSC": {
+		"name": "Mysticorp",
+		"price": "8gp",
+		"desc": "To be added"
+	},
+	"TCO": {
+		"name": "TerranCo",
+		"price": "8gp",
+		"desc": "To be added"
+	},
+	"UTPN": {
+		"name": "Utopian Enterprises",
+		"price": "8gp",
+		"desc": "To be added"
+	},
+	"VSFT": {
+		"name": "Vertisoft",
+		"price": "8gp",
+		"desc": "To be added"
+	}
 }
