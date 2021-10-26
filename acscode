@@ -30,7 +30,7 @@ if help :
 # if they dont ask for help check if they're checking, buying, or selling
 elif cbs == "check" :
   if S :
-    output = "Checking prices...|*Name:* "+sName+"\n*Price:* "+sPrice+"\n*Company Description:* "+sDesc
+    output = "Checking prices...|*Name:* "+sName+"\n*Price:* "+sPrice+"gp\n*Company Description:* "+sDesc
   else :
     output = "Checking Prices...|This will check all of the prices when no symbol is specified."
 elif cbs == "buy" :

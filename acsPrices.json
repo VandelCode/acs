@@ -1,37 +1,37 @@
 {
-	"AAI": {
+	"aai": {
 		"name": "Atlas Armory Initiative",
-		"price": "10gp",
+		"price": "10",
 		"desc": "The Atlas Armory Initiative is the organiztion that employes so-called \"Adventurers\" to take on a wide variety of dangerous jobs aboard Atlas Station and beyond."
 	},
-	"ACCI": {
+	"acci": {
 		"name": "Accent Industries",
-		"price": "8gp",
+		"price": "8",
 		"desc": "To be added"
 	},
-	"GNN": {
+	"gnn": {
 		"name": "Global News Network",
-		"price": "8gp",
+		"price": "8",
 		"desc": "To be added"
 	},
-	"MYSC": {
+	"mysc": {
 		"name": "Mysticorp",
-		"price": "8gp",
+		"price": "8",
 		"desc": "To be added"
 	},
-	"TCO": {
+	"tco": {
 		"name": "TerranCo",
-		"price": "8gp",
+		"price": "8",
 		"desc": "To be added"
 	},
-	"UTPN": {
+	"utpn": {
 		"name": "Utopian Enterprises",
-		"price": "8gp",
+		"price": "8",
 		"desc": "To be added"
 	},
-	"VSFT": {
+	"vsft": {
 		"name": "Vertisoft",
-		"price": "8gp",
+		"price": "8",
 		"desc": "To be added"
 	}
 }
