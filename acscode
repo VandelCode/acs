@@ -1,47 +1,54 @@
 !alias acs embed
 <drac2>
-# get helptext gvar
+# get helptext gvar (done)
 helptext = get_gvar("3c6e3f64-815a-4dda-9c7e-134a2583ca19")
-# get prices svar
+# get prices svar (done)
 prices = load_json(get_svar('acsPrices'))
-allPrice = [i for i in prices]
-# define variable for arg parsing
+# allPrice = [i for i in prices]
+# define variable for arg parsing (done)
 args = &ARGS&
 pargs = argparse(args)
-# define check/buy/sell amount and symbol variables
-if args :
-  cbs,A,S = args[0].lower() if args else "help", pargs.last('amt'), pargs.last('sym').lower()
-  # sym = [x for x in prices if S.lower() in x.lower()]
-  sym = prices[S]
-  sName = sym['name']
-  sPrice = sym['price']
-  sDesc = sym['desc']
-# define help variable
+opts = ['buy', 'sell', 'check']
+# define help variable (done)
 help = args[0].lower() in '?help' if args else True
-# define a description variable containing the basic description
+# define check/buy/sell amount and symbol variables (done)
+if args and not help:
+  cbs,A,S = args[0].lower() if args else "help", pargs.last('amt') if "amt" in pargs else 0, pargs.last('sym')
+  # sym = [x for x in prices if S.lower() in x.lower()]
+  if S :
+    sym = prices[S]
+    sName = sym['name']
+    sPrice = sym['price']
+    sDesc = sym['desc']
+
+# define a description variable containing the basic description (done)
 desc = "This is an alias to trade on the Atlas CurrenSea!"
 
 # start an if/else that first checks if the user asks for help
 if help :
-  output = "Usage|{helptext}"
+  output = "Usage|"+helptext
 # if they dont ask for help check if they're checking, buying, or selling
 elif cbs == "check" :
-  output = "Checking prices...|*Name:* {sName}\n\n*Price:* {sPrice}\n\n*Company Description:* {sDesc}"
+  if S :
+    output = "Checking prices...|*Name:* "+sName+"\n*Price:* "+sPrice+"\n*Company Description:* "+sDesc
+  else :
+    output = "Checking Prices...|This will check all of the prices when no symbol is specified."
 elif cbs == "buy" :
-  output = "Buying Stock!|You bought this amount of that"
+  output = "Buying Stock...|You bought "+A+" units of "+sName
 elif cbs == "sell" :
-  output = "Selling Stock!|You sold this amount of that"
+  output = "Selling Stock...|You sold "+A+" units of "+sName
 else :
   output = "Usage|This will be useful help text" 
 
 text = (f'-title "Atlas CurrenSea!"'
   f' -desc "{desc}"'
   f' -f "{output}"'
-  f' -f "Prices|{prices}"'
-  f' -f "sym|{sym}"'
-  f' -f "sName|{sName}"'
-  f' -f "sPrice|{sPrice}"'
-  f' -f "allPrice|{allPrice}"')
+#  f' -f "Prices|{prices}"'
+#  f' -f "sym|{sym}"'
+#  f' -f "sName|{sName}"'
+#  f' -f "sPrice|{sPrice}"'
+#  f' -f "allPrice|{allPrice}"'
+  )
   
 return text
 
